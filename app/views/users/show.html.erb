@@ -1,1 +1,17 @@
-<%= @user.name %>, <%= @user.email%>
+<table class="profile" summary="Profile information">
+	<tr>
+		<td class="main">
+			<h1>
+				<%= gravatar_for @user%>
+				<%= @user.name %>
+			</h1>
+		</td>
+		<td>
+			<strong>Name</strong> <%= @user.name%>
+			<strong>URL</strong> <%= link_to user_path(@user), @user %>
+		</td>
+	</tr>
+<h1>
+	<%= gravatar_image_tag @user.email, :class => "gravatar" %>
+	<%= @user.name %>
+</h1>
