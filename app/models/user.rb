@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness=>{:case_sensitive => false}
   validates :password, :presence => true
   validates :password, :confirmation => true
-  validates :password, :length => (:within =>6..40)
+  validates :password, :length => {:within => 6..40}
   before_save :encrypt_password
   
   def has_password?(submitted_password)
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
     user = find_by_email(email)
     return nil if user.nil?
     return user if user.has_password?(submitted_password)
+  end
   
   private
     def encrypt_password
